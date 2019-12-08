@@ -3,7 +3,9 @@ from django.http import HttpResponse
 # Create your views here.
 
 def index(request):
-    return HttpResponse("Hello hello bandli bot bot bot ")
+    context={'x':'hello world'}
+
+    return render(request,'index.html',context)
 
 def login(request):
     return HttpResponse("its login")
