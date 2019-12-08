@@ -5,4 +5,7 @@ from django.http import HttpResponse
 def index(request):
     return HttpResponse("Hello hello bandli bot bot bot ")
 
+def login(request):
+    return HttpResponse("its login")
+
 
