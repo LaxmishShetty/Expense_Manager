@@ -16,10 +16,12 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url
-from ExpenseManager import views
+from ExpenseManager import views as expense_manager_views
+from register import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    url(r'^$',views.index,name='index'),
+    url(r'^$',expense_manager_views.index,name='index'),
     url(r'^login$',views.login,name='login'),
+    url(r'^register$',views.register,name='register'),
 ]
