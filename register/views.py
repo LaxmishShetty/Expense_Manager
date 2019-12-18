@@ -21,7 +21,6 @@ def register(request):
     registered = False
     if request.POST:
         form = UserLoginForm(request.POST)
-        breakpoint()
         if form.is_valid():
             username = form.cleaned_data.get('username')
             if User.objects.filter(username=username).exists():
@@ -52,7 +51,6 @@ def login_page(request):
     if request.POST:
         form = LoginForm(request.POST)
         if form.is_valid():
-            breakpoint()
             username = request.POST['username']
             password = request.POST['password']
             user = authenticate(username=username, password=password)
