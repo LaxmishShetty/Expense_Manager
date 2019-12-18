@@ -9,7 +9,7 @@ https://docs.djangoproject.com/en/2.2/topics/settings/
 For the full list of settings and their values, see
 https://docs.djangoproject.com/en/2.2/ref/settings/
 """
-
+import django
 import django_heroku
 import os
 
@@ -43,6 +43,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'django.middleware.csrf.CsrfViewMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -119,8 +120,14 @@ USE_TZ = True
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
-
+CRISPY_TEMPLATE_PACK = 'bootstrap3'
 STATIC_URL = '/static/'
 
-
+LOGIN_URL = '/login'
+HOME_URL = '/'
 django_heroku.settings(locals())
+
+# STATICFILES_DIRS = (
+#     os.path.join(BASE_DIR, 'static/', ),
+# )
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
