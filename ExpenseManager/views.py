@@ -7,13 +7,16 @@ from django.http import HttpResponseRedirect
 # Create your views here.
 
 def index(request):
-    context={'x':'hello world'}
+    if request.user.is_authenticated:
+        logged_in = True
+        return render(request,'index.html',{'logged_in':logged_in})
+    else:
+        return render(request,'login.html')
 
-    return render(request,'index.html')
 
 
-
-
+def home(request):
+    return render(request,'base.html')
 
 
 

@@ -1,34 +1,41 @@
 <!DOCTYPE html>
-{% load crispy_forms_tags %}
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Register</title>
-    <style>
-        #div_id_username{
-        display:inline;}
-    </style>
-</head>
-<body>
+{% extends 'base.html' %}
+{% block title %}Sign up {% endblock %}
 {% block content %}
-{% if user.is_authenticated %}
-<meta http-equiv="REFRESH" content="0;url=/"> {% endif %}
-
 <div class="container">
-    <div class="jumbotron">
-        <form method="post" action="">
-            {% csrf_token %}
-        <div class="form-row">
-        <div class="form-group col-lg-12 mb-0">
-            {{ form.username | as_crispy_field }}
-        </div>
-        </div>
-            </form>
-    </div>
+    <div class="jumbotron" style="width:400px; margin : 0 250px;">
+        <h2>Sign Up</h2>
+        {% for message in messages %}
+            <div class="alert alert-success">
+                        <a class="close" href="#" data-dismiss="alert"></a>
+                        {{ message }}
+                    </div>
+        {% endfor %}
+<form method="post" action="/register" enctype= multipart/form-data>
+    {% csrf_token %}
+<div class="form-group">
+    <label for="usernameidone">Username</label>
+    <input type="text" class="form-control" placeholder="Username" id="usernameidone"  name ="username" required>
+</div>
+    <div class="form-group">
+    <label for="emailidone">Email</label>
+    <input type="email" class="form-control" placeholder="Email" id="emailidone" name="email" required>
+</div>
+     <div class="form-group">
+    <label for="passone">Password</label>
+    <input type="password" class="form-control" placeholder="Password" id="passone" name="password" required>
+</div>
+     <div class="form-group">
+    <label for="conpassone">Re-enter Password</label>
+    <input type="password" class="form-control" placeholder="Password" id="conpassone" name="repassword" required>
 </div>
 
-
-
+    <input type="submit" class="btn btn-primary" style="margin:0 100px;" name ='sub' value = "Submit">
+</form>
+    </div>
+</div>
 {% endblock %}
-</body>
-</html>
+
+
+
+

@@ -18,10 +18,13 @@ from django.urls import path
 from django.conf.urls import url
 from ExpenseManager import views as expense_manager_views
 from register import views
+from django.contrib.auth import views as auth_views
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     url(r'^$',expense_manager_views.index,name='index'),
-    url(r'^login$',views.login,name='login'),
+    url(r'^login$',views.login_page,name='login'),
     url(r'^register$',views.register,name='register'),
+    url(r'^logout$',views.logout_page,name='logout'),
 ]
