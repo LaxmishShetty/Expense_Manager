@@ -45,7 +45,6 @@ def food(request):
         if request.method == "POST":
             form = FoodForm(request.POST)
             if form.is_valid():
-                breakpoint()
                 foodname = form.cleaned_data.get('Name')
                 foodexpense = form.cleaned_data.get('Expense')
                 foodDate = form.cleaned_data.get('Datee')
