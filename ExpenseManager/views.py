@@ -18,7 +18,6 @@ def index(request):
         Expenses = Category.objects.get(user=userr).total_expense
         Petrol_expenses = Category.objects.get(user=userr).petrol_total_expense
         Clothes_expenses = Category.objects.get(user=userr).clothes_total_expense
-        #return HttpResponseRedirect(reverse('index'))
         return render(request,'index.html',{'logged_in':logged_in,'Expenses':Expenses,'Petrol_expenses':Petrol_expenses,'Clothes_expenses':Clothes_expenses})
     else:
         return render(request,'login.html')
