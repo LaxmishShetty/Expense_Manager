@@ -49,11 +49,14 @@ def food(request):
                 foodexpense = form.cleaned_data.get('Expense')
                 foodDate = form.cleaned_data.get('Datee')
                 userr = User.objects.get(username=user)
-                previous_total_expense = Category.objects.get(user=userr)
-                x = previous_total_expense.total_expense
-                foodinfo = Category.objects.filter(user=userr).update(total_expense=foodexpense+x)
-                Expenses = Category.objects.get(user=userr).total_expense
-                return HttpResponseRedirect(reverse('index'))
+                try:
+                    previous_total_expense = Category.objects.get(user=userr)
+                    x = previous_total_expense.total_expense
+                    foodinfo = Category.objects.filter(user=userr).update(total_expense=foodexpense+x)
+                    Expenses = Category.objects.get(user=userr).total_expense
+                    return HttpResponseRedirect(reverse('index'))
+                except Category.DoesNotExist:
+                    user = None
             else:
                 messages.error(request,form.errors)
         else:
