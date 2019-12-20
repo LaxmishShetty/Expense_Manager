@@ -19,9 +19,13 @@ def index(request):
             Expenses = Category.objects.get(user=userr).total_expense
             Petrol_expenses = Category.objects.get(user=userr).petrol_total_expense
             Clothes_expenses = Category.objects.get(user=userr).clothes_total_expense
+            return render(request, 'index.html',
+                          {'logged_in': logged_in, 'Expenses': Expenses, 'Petrol_expenses': Petrol_expenses,
+                           'Clothes_expenses': Clothes_expenses})
+
         except Category.DoesNotExist:
             user = None
-        return render(request,'index.html',{'logged_in':logged_in,'Expenses':Expenses,'Petrol_expenses':Petrol_expenses,'Clothes_expenses':Clothes_expenses})
+        return render(request,'index.html',{'logged_in':logged_in,'Expenses':Expenses})
     else:
         return render(request,'login.html')
 
