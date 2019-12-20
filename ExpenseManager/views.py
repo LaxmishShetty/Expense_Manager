@@ -25,7 +25,7 @@ def index(request):
 
         except Category.DoesNotExist:
             user = None
-        return render(request,'index.html',{'logged_in':logged_in,'Expenses':Expenses})
+        return render(request,'index.html',{'logged_in':logged_in})
     else:
         return render(request,'login.html')
 
