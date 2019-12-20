@@ -17,12 +17,12 @@ from django.contrib.auth.models import User
 
 class Category(models.Model):
     user = models.OneToOneField(User,on_delete=models.CASCADE,default=1)
-    name = models.CharField(blank=True, max_length=20,null=True)
+    name = models.CharField(blank=True, max_length=20,null=True,default='Cake')
     total_expense = models.IntegerField(blank=True,null=True,default=1)
-    datefield = models.DateField(blank=True,null=True)
+    datefield = models.DateField(blank=True,null=True,default='23/12/12')
     petrol_total_expense = models.IntegerField(blank=True,default=1,null=True)
     clothes_total_expense = models.IntegerField(blank=True,default=1,null=True)
-    cloth_type = models.CharField(blank=True,max_length=20,null=True)
+    cloth_type = models.CharField(blank=True,max_length=20,null=True,default='Jeans')
 
     def __str__(self):
         return self.user.username
