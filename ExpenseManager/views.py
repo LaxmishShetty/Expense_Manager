@@ -14,10 +14,13 @@ def index(request):
     if request.user.is_authenticated:
         logged_in = True
         user = request.user.username
-        userr = User.objects.get(username=user)
-        Expenses = Category.objects.get(user=userr).total_expense
-        Petrol_expenses = Category.objects.get(user=userr).petrol_total_expense
-        Clothes_expenses = Category.objects.get(user=userr).clothes_total_expense
+        try:
+            userr = User.objects.get(username=user)
+            Expenses = Category.objects.get(user=userr).total_expense
+            Petrol_expenses = Category.objects.get(user=userr).petrol_total_expense
+            Clothes_expenses = Category.objects.get(user=userr).clothes_total_expense
+        except Category.DoesNotExist:
+            user = None
         return render(request,'index.html',{'logged_in':logged_in,'Expenses':Expenses,'Petrol_expenses':Petrol_expenses,'Clothes_expenses':Clothes_expenses})
     else:
         return render(request,'login.html')
