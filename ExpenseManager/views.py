@@ -57,6 +57,7 @@ def food(request):
                     return HttpResponseRedirect(reverse('index'))
                 except Category.DoesNotExist:
                     user = None
+                    return HttpResponseRedirect(reverse('index'))
             else:
                 messages.error(request,form.errors)
         else:
