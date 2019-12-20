@@ -45,19 +45,17 @@ def food(request):
         if request.method == "POST":
             form = FoodForm(request.POST)
             if form.is_valid():
+                breakpoint()
                 foodname = form.cleaned_data.get('Name')
                 foodexpense = form.cleaned_data.get('Expense')
                 foodDate = form.cleaned_data.get('Datee')
                 userr = User.objects.get(username=user)
-                try:
-                    previous_total_expense = Category.objects.get(user=userr)
-                    x = previous_total_expense.total_expense
-                    foodinfo = Category.objects.filter(user=userr).update(total_expense=foodexpense+x)
-                    Expenses = Category.objects.get(user=userr).total_expense
-                    return HttpResponseRedirect(reverse('index'))
-                except Category.DoesNotExist:
-                    user = None
-                    return HttpResponseRedirect(reverse('index'))
+                cr = Category.objects.create(user=userr)
+                previous_total_expense = Category.objects.get(user=userr)
+                x = previous_total_expense.total_expense
+                foodinfo = Category.objects.filter(user=userr).update(total_expense=foodexpense+x)
+                Expenses = Category.objects.get(user=userr).total_expense
+                return HttpResponseRedirect(reverse('index'))
             else:
                 messages.error(request,form.errors)
         else:
@@ -75,6 +73,7 @@ def petrol(request):
                 petrol_expense = form.cleaned_data.get('Expense')
                 petrol_date = form.cleaned_data.get('Datee')
                 userr = User.objects.get(username=user)
+                cr = Category.objects.create(user=userr)
                 previous_petrol_total_expense = Category.objects.get(user=userr)
                 x = previous_petrol_total_expense.petrol_total_expense
                 Category.objects.filter(user=userr).update(petrol_total_expense=x + petrol_expense)
@@ -97,6 +96,7 @@ def clothes(request):
                 clothes_expense = form.cleaned_data.get('Expense')
                 clothes_date = form.cleaned_data.get('Datee')
                 userr = User.objects.get(username=user)
+                cr = Category.objects.create(user=userr)
                 previous_clothes_total_expense = Category.objects.get(user=userr)
                 x = previous_clothes_total_expense.clothes_total_expense
                 Category.objects.filter(user=userr).update(clothes_total_expense=x+clothes_expense)
