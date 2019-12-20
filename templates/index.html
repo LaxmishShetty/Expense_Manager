@@ -45,6 +45,14 @@
 </div>
     {% endif %}
 </div>
+{% if Total_expenses %}
+<div class="container">
+    <h2>Total Expenses :{{Total_expenses}}</h2>
 </div>
+{% else %}
+<div class="container">
+    <h2>Total Expenses : 0</h2>
+</div>
+{% endif %}
 {% endblock %}
 

@@ -19,9 +19,10 @@ def index(request):
             Expenses = Category.objects.get(user=userr).total_expense
             Petrol_expenses = Category.objects.get(user=userr).petrol_total_expense
             Clothes_expenses = Category.objects.get(user=userr).clothes_total_expense
+            Total_expenses = Expenses + Petrol_expenses + Clothes_expenses
             return render(request, 'index.html',
                           {'logged_in': logged_in, 'Expenses': Expenses, 'Petrol_expenses': Petrol_expenses,
-                           'Clothes_expenses': Clothes_expenses})
+                           'Clothes_expenses': Clothes_expenses,'Total_expenses':Total_expenses})
 
         except Category.DoesNotExist:
             user = None
@@ -54,6 +55,8 @@ def food(request):
                     x = previous_total_expense.total_expense
                     foodinfo = Category.objects.filter(user=userr).update(total_expense=foodexpense + x)
                     Expenses = Category.objects.get(user=userr).total_expense
+                    Total_expenses = previous_total_expense.total_expense + previous_total_expense.petrol_total_expense + previous_total_expense.clothes_total_expense
+
                     return HttpResponseRedirect(reverse('index'))
                 else:
                     cr = Category.objects.create(user=userr)
@@ -61,6 +64,7 @@ def food(request):
                     x = previous_total_expense.total_expense
                     foodinfo = Category.objects.filter(user=userr).update(total_expense=foodexpense+x)
                     Expenses = Category.objects.get(user=userr).total_expense
+                    Total_expenses = previous_total_expense.total_expense + previous_total_expense.petrol_total_expense + previous_total_expense.clothes_total_expense
                     return HttpResponseRedirect(reverse('index'))
             else:
                 messages.error(request,form.errors)
@@ -83,6 +87,7 @@ def petrol(request):
                     x = previous_petrol_total_expense.petrol_total_expense
                     Category.objects.filter(user=userr).update(petrol_total_expense=x + petrol_expense)
                     Petrol_Expenses = Category.objects.get(user=userr).petrol_total_expense
+                    Total_expenses = previous_petrol_total_expense.total_expense + previous_petrol_total_expense.petrol_total_expense + previous_petrol_total_expense.clothes_total_expense
                     return HttpResponseRedirect(reverse('index'))
                 else:
                     cr = Category.objects.create(user=userr)
@@ -90,6 +95,7 @@ def petrol(request):
                     x = previous_petrol_total_expense.petrol_total_expense
                     Category.objects.filter(user=userr).update(petrol_total_expense=x + petrol_expense)
                     Petrol_Expenses = Category.objects.get(user=userr).petrol_total_expense
+                    Total_expenses = previous_petrol_total_expense.total_expense + previous_petrol_total_expense.petrol_total_expense + previous_petrol_total_expense.clothes_total_expense
                     return HttpResponseRedirect(reverse('index'))
             else:
                 messages.error(request,form.errors)
