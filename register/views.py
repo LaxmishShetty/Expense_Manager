@@ -22,7 +22,6 @@ def register(request):
     if request.POST:
         form = UserLoginForm(request.POST)
         if form.is_valid():
-            breakpoint()
             username = form.cleaned_data.get('username')
             if User.objects.filter(username=username).exists():
                 messages.error(request,"The username is already taken")
