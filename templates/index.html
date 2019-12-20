@@ -8,14 +8,42 @@
 
 {% block content %}
 <div class="container">
+    {% if Expenses %}
+    <div class="col-lg-4 styling">
+<h2 style="margin:50px 100px;color:black"><i class="fa fa-cutlery" aria-hidden="true"></i>
+    <span id ='food'><a href="/food">Food</a></span></h2>
+        <h6 style="margin:50px 100px;">Expenses:{{Expenses}}</h6>
+</div>
+    {% else %}
 <div class="col-lg-4 styling">
-<h2 class="text_style">Food</h2>
+<h2 style="margin:50px 100px;color:black"><i class="fa fa-cutlery" aria-hidden="true"></i>
+    <span id ='food'><a href="/food">Food</a></span></h2>
 </div>
+    {% endif %}
+    {% if Petrol_expenses %}
     <div class="col-lg-4 styling">
-<h2 class="text_style">Transport</h2>
+<h2 style="margin:50px 100px;color:black"><i class="fa fa-car" aria-hidden="true"></i>
+<span id ='petrol'><a href="/petrol">Petrol</a></span></h2>
+        <h6 style="margin:50px 100px;">Expenses:{{Petrol_expenses}}</h6>
 </div>
+    {% else %}
     <div class="col-lg-4 styling">
-<h2 class="text_style">Clothing</h2>
+<h2 style="margin:50px 100px;color:black"><i class="fa fa-car" aria-hidden="true"></i>
+    <span id ='petrol'><a href="/petrol">Petrol</a></span></h2>
+</div>
+    {% endif %}
+    {% if Clothes_expenses %}
+     <div class="col-lg-4 styling">
+<h2 style="margin:50px 100px;color:black"><i class="fa fa-car" aria-hidden="true"></i>
+    <span id ='clothes'><a href="/clothes">Cloth</a></span></h2>
+         <h6 style="margin:50px 100px;">Expenses:{{Clothes_expenses}}</h6>
+</div>
+    {% else %}
+     <div class="col-lg-4 styling">
+<h2 style="margin:50px 100px;color:black"><i class="fa fa-car" aria-hidden="true"></i>
+    <span id ='clothes'><a href="/clothes">Cloth</a></span></h2>
+</div>
+    {% endif %}
 </div>
 </div>
 {% endblock %}

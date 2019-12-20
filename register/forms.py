@@ -1,6 +1,6 @@
 from django import forms
 import re
-from ExpenseManager.models import UserProfileInfo,User
+from ExpenseManager.models import User
 # class RegistrationForm(forms.Form):
 #     username = forms.CharField(widget=forms.TextInput(),label='Username')
 #     email = forms.CharField(widget=forms.EmailInput(attrs=dict(required=True,placeholder='E-mail')))

@@ -1,11 +1,15 @@
-.text_style{
- margin:50px 100px;
- }
+.grad{
+background-color:#89fffd;
+}
 
 .styling{
 background-color:pink;
 height:200px;
 border:1px solid gray;
-opacity:0.4;
+opacity:0.7;
 }
 
+.grayout{
+text-decoration:line-through;
+
+}

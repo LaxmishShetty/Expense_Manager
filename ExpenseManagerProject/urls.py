@@ -23,8 +23,12 @@ from django.contrib.auth import views as auth_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    #url(r'^$',expense_manager_views.home,name='home'),
     url(r'^$',expense_manager_views.index,name='index'),
     url(r'^login$',views.login_page,name='login'),
     url(r'^register$',views.register,name='register'),
     url(r'^logout$',views.logout_page,name='logout'),
+    url(r'^food$',expense_manager_views.food,name='food'),
+    url(r'^petrol$',expense_manager_views.petrol,name='petrol'),
+    url(r'clothes$',expense_manager_views.clothes,name='clothes'),
 ]

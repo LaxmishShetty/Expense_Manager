@@ -2,12 +2,11 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %} {% endblock %} </title>
+    <title>{% block title %}Home {% endblock %} </title>
  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 <!-- Optional theme -->
 <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
     <link rel="stylesheet" href=" https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="static/lib/jQuery.min.js" type="text/javascript"></script>
 {% block head %}
 
 {% endblock %}
@@ -31,11 +30,11 @@
       </ul>
         {% if registered %}
         <ul class="nav navbar-nav navbar-right">
-            <li><h5>Hi {{ user.username }}</h5></li>
+            <li><h4>Hi {{ user.username }}</h4></li>
             <li><a href="/logout">Logout</a></li></ul>
-        {% elif user.is_authenticated %}
+        {% elif logged_in %}
         <ul class="nav navbar-nav navbar-right">
-            <li style="margin:7px;;"><h5>Hi {{ user.username }}</h5></li>
+            <li><h4>Hi {{ user.username }}</h4></li>
                 <li><a href="/logout">Logout</a></li></ul>
         {% else %}
       <ul class="nav navbar-nav navbar-right">
@@ -47,13 +46,13 @@
   </div>
 </nav>
 
+<div class="container" >
+
+</div>
+
 {% block content %}
 
 {% endblock %}
-<script src="static/expense.js" type="text/javascript"></script>
+
 </body>
 </html>
-
-
-
-

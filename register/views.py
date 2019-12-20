@@ -22,6 +22,7 @@ def register(request):
     if request.POST:
         form = UserLoginForm(request.POST)
         if form.is_valid():
+            breakpoint()
             username = form.cleaned_data.get('username')
             if User.objects.filter(username=username).exists():
                 messages.error(request,"The username is already taken")
@@ -33,8 +34,10 @@ def register(request):
                 user = form.save()
                 user.set_password(user.password)
                 user.save()
+                x = user.username
                 registered = True
-                return render(request,'index.html',{'registered':registered})
+                return HttpResponseRedirect(reverse('index'))
+                #return render(request,'index.html',{'registered':registered})
             else:
                 messages.error(request,"Passwords don't match")
         else:
@@ -58,8 +61,7 @@ def login_page(request):
                 if user.is_active:
                     login(request, user)
                     logged_in = True
-                    return render(request,'base.html',{'logged_in':logged_in})
-                    #return HttpResponseRedirect((reverse('index')))
+                    return HttpResponseRedirect(reverse('index'))
                 else:
                     messages.error(request, 'User is not active')
                     #return HttpResponse("User is not active")

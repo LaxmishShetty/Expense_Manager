@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+{% for message in messages %}
+            <div class="alert alert-success">
+                        <a class="close" href="#" data-dismiss="alert"></a>
+                        {{ message }}
+                    </div>
+        {% endfor %}
+    <form method="post" action="/petrol">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="expenseid">Expense</label>
+            <input type="text" class="form-control" name ='Expense' placeholder="Expense"  id ='expenseid' required>
+        </div>
+        <div class="form-group">
+            <label for="dateid">Date:</label>
+            <input type="date" class="form-control" name ='Datee' placeholder="Date:"  id ='dateid' required>
+        </div>
+        <div class="form-group">
+            <input type="submit" name="submit" class="btn btn-primary" value="Add">
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+
+
+
+
