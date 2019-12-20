@@ -45,7 +45,6 @@ def food(request):
         if request.method == "POST":
             form = FoodForm(request.POST)
             if form.is_valid():
-                breakpoint()
                 foodname = form.cleaned_data.get('Name')
                 foodexpense = form.cleaned_data.get('Expense')
                 foodDate = form.cleaned_data.get('Datee')
@@ -68,7 +67,6 @@ def petrol(request):
         user = request.user.username
         if request.method == 'POST':
             form = PetrolForm(request.POST)
-            breakpoint()
             if form.is_valid():
                 petrol_expense = form.cleaned_data.get('Expense')
                 petrol_date = form.cleaned_data.get('Datee')
