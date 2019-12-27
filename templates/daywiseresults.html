@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}DayWise {% endblock %}
+
+{% block content %}
+
+
+<div class="container">
+    <p style="font-style:monaco;font-size:20px">Date: {{date}}</p>
+    <p>Food Expense : {{foodexpense}}</p>
+    <p>Petrol Expense :{{petrolexpense}}</p>
+    <p>Cloth Expense :{{clothexpense}}</p>
+    <p>Total Expense :{{totalexpenses}}</p>
+</div>
+{% endblock %}

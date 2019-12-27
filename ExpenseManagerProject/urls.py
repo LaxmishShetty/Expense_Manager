@@ -31,4 +31,6 @@ urlpatterns = [
     url(r'^food$',expense_manager_views.food,name='food'),
     url(r'^petrol$',expense_manager_views.petrol,name='petrol'),
     url(r'clothes$',expense_manager_views.clothes,name='clothes'),
+    url(r'^daywise$',expense_manager_views.daywise,name='daywise'),
+    #url(r'^daywiseresults',expense_manager_views.daywiseresults,name='daywiseresults'),
 ]

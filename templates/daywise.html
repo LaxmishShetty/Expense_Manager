@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}DayWise {% endblock %}
+{% block content %}
+
+{% for message in messages %}
+            <div class="alert alert-success">
+                        <a class="close" href="#" data-dismiss="alert"></a>
+                        {{ message }}
+                    </div>
+        {% endfor %}
+<div class="container">
+        <form method="post" action="/daywise" >
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="dateid">Select Date:</label>
+                <input type="date" name="DayWiseDate" placeholder="Date:" id="dateid" class="form-control" >
+            </div>
+            <div class="form-group">
+                <button type="submit" name="sub" value="Give my expense" class="btn btn-primary">Submit</button>
+            </div>
+        </form>
+</div>
+{% endblock %}

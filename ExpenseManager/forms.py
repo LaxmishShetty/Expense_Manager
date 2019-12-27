@@ -32,3 +32,7 @@ class ClothesForm(forms.Form):
     Cloth_Type = forms.CharField(widget=forms.TextInput(), required=False)
     Expense = forms.IntegerField(widget=forms.NumberInput(), required=False)
     Datee = forms.DateField(widget=forms.DateInput(), required=False)
+
+
+class DaywiseForm(forms.Form):
+    DayWiseDate = forms.DateField(widget=forms.DateInput(),required=False)
