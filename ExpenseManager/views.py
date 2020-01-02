@@ -17,12 +17,18 @@ def index(request):
         user = request.user.username
         try:
             userr = User.objects.get(username=user)
-            x = Category.objects.get(user=userr)
-            y = x.datefield
-            Expenses = Category.objects.get(user=userr).total_expense
-            Petrol_expenses = Category.objects.get(user=userr).petrol_total_expense
-            Clothes_expenses = Category.objects.get(user=userr).clothes_total_expense
-            Total_expenses = Expenses + Petrol_expenses + Clothes_expenses
+            if Category.objects.get(user=userr).exists():
+            #y = x.datefield
+                Expenses = Category.objects.get(user=userr).total_expense
+                Petrol_expenses = Category.objects.get(user=userr).petrol_total_expense
+                Clothes_expenses = Category.objects.get(user=userr).clothes_total_expense
+                Total_expenses = Expenses + Petrol_expenses + Clothes_expenses
+            else:
+                Category.objects.create(user=userr)
+                Expenses = Category.objects.get(user=userr).total_expense
+                Petrol_expenses = Category.objects.get(user=userr).petrol_total_expense
+                Clothes_expenses = Category.objects.get(user=userr).clothes_total_expense
+                Total_expenses = Expenses + Petrol_expenses + Clothes_expenses
             return render(request, 'index.html',
                           {'logged_in': logged_in, 'Expenses': Expenses, 'Petrol_expenses': Petrol_expenses,
                            'Clothes_expenses': Clothes_expenses,'Total_expenses':Total_expenses})
