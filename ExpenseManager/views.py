@@ -72,6 +72,13 @@ def food(request):
                     return HttpResponseRedirect(reverse('index'))
                 else:
                     cr = Category.objects.create(user=userr)
+                    if Date.objects.filter(dateField=foodDate).exists():
+                        x = Date.objects.get(dateField=foodDate).food_expense
+                        Date.objects.filter(dateField=foodDate).update(food_expense=foodexpense + x)
+                    else:
+                        Date.objects.create(dateField=foodDate)
+                        x = Date.objects.get(dateField=foodDate).food_expense
+                        Date.objects.filter(dateField=foodDate).update(food_expense=foodexpense + x)
                     previous_total_expense = Category.objects.get(user=userr)
                     x = previous_total_expense.total_expense
                     foodinfo = Category.objects.filter(user=userr).update(total_expense=foodexpense+x)
@@ -111,6 +118,12 @@ def petrol(request):
                     return HttpResponseRedirect(reverse('index'))
                 else:
                     cr = Category.objects.create(user=userr)
+                    if Date.objects.filter(dateField=petrol_date).exists():
+                        x = Date.objects.get(dateField=petrol_date).petrol_expense
+                        Date.objects.filter(dateField=petrol_date).update(petrol_expense=petrol_expense + x)
+                    else:
+                        Date.objects.create(dateField=petrol_date)
+                        x = Date.objects.get(dateField=petrol_date).petrol_expense
                     previous_petrol_total_expense = Category.objects.get(user=userr)
                     x = previous_petrol_total_expense.petrol_total_expense
                     Category.objects.filter(user=userr).update(petrol_total_expense=x + petrol_expense)
@@ -150,6 +163,13 @@ def clothes(request):
                     return HttpResponseRedirect(reverse('index'))
                 else:
                     cr = Category.objects.create(user=userr)
+                    if Date.objects.filter(dateField=clothes_date).exists():
+                        x = Date.objects.get(dateField=clothes_date).cloth_expense
+                        Date.objects.filter(dateField=clothes_date).update(cloth_expense=clothes_expense + x)
+                    else:
+                        Date.objects.create(dateField=clothes_date)
+                        x = Date.objects.get(dateField=clothes_date).cloth_expense
+                        Date.objects.filter(dateField=clothes_date).update(cloth_expense=clothes_expense + x)
                     previous_clothes_total_expense = Category.objects.get(user=userr)
                     x = previous_clothes_total_expense.clothes_total_expense
                     Category.objects.filter(user=userr).update(clothes_total_expense=x+clothes_expense)

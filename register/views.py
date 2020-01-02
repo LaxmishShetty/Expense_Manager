@@ -25,8 +25,8 @@ def register(request):
             username = form.cleaned_data.get('username')
             if User.objects.filter(username=username).exists():
                 messages.error(request,"The username is already taken")
-            if len(username) > 10 :
-                messages.error(request,"Username can contain atmost 10 characters")
+            if len(username) > 15 :
+                messages.error(request,"Username can contain atmost 15 characters")
             password = form.cleaned_data.get('password')
             repassword = form.cleaned_data.get('repassword')
             if password == repassword:
