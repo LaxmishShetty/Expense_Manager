@@ -34,7 +34,7 @@ class Category(models.Model):
 class Date(models.Model):
     #userName = models.ForeignKey(Category,on_delete=models.CASCADE,default=1)
     dateField = models.DateField(blank=True,default='2019-01-01')
-    foodname = models.CharField(blank=True,max_length=20,null=True)
+    #foodname = models.CharField(blank=True,max_length=20,null=True)
     food_expense = models.IntegerField(blank=True,null=True,default=1)
     petrol_expense = models.IntegerField(blank=True,null=True,default=1)
     cloth_expense = models.IntegerField(blank=True,null=True,default=1)
