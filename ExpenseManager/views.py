@@ -19,7 +19,7 @@ def index(request):
             userr = User.objects.get(username=user)
             if Category.objects.filter(user=userr).exists():
             #y = x.datefield
-                Expenses = Category.objects.get(user=userr).total_expense
+                #Expenses = Category.objects.get(user=userr).total_expense
                 Petrol_expenses = Category.objects.get(user=userr).petrol_total_expense
                 Clothes_expenses = Category.objects.get(user=userr).clothes_total_expense
                 Total_expenses = Expenses + Petrol_expenses + Clothes_expenses
