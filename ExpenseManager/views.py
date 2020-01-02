@@ -17,7 +17,7 @@ def index(request):
         user = request.user.username
         try:
             userr = User.objects.get(username=user)
-            if Category.objects.get(user=userr).exists():
+            if Category.objects.filter(user=userr).exists():
             #y = x.datefield
                 Expenses = Category.objects.get(user=userr).total_expense
                 Petrol_expenses = Category.objects.get(user=userr).petrol_total_expense
